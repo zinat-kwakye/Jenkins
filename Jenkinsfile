@@ -1,15 +1,30 @@
 pipeline{
   agent any
   stages{
-    stage("make a directory"){
+    stage("Pipeline Stages"){
       steps{
-        sh "mkdir ~/jenkins-demo"
+        sh "ls"
       }
     }
-    stage("add files"){
+    stage("second stage"){
       steps{
-        sh "touch ~/jenkins-demo/file1.txt"
+        sh "pwd"
       }
     }
+    stage("third stage"){
+      steps{
+        sh "touch example.txt"
+      }
+    }
+    stage("fourth stage"){
+      steps{
+        sh "echo example.txt"
+      }
+    }
+    stage("fifth stage"){
+      steps{
+        sh "mv example.txt new.txt"
+      }
+    }   
   }
 }
