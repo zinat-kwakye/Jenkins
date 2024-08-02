@@ -5,9 +5,10 @@ pipeline{
       steps{
         sh 'docker rm -f flask-app'
         sh 'docker rmi -f flask-app'
+        sh 'rm -f trivy-report.json'
       }
     }
-    stage("second stage - build images"){
+    stage("Build Images"){
       steps{
         sh "docker build -t flask-app ."
       }
@@ -16,6 +17,11 @@ pipeline{
       steps {
         sh "trivy fs --format json -o trivy-report.json ."
             }
+    }
+    stage("Archive File"){
+      steps{
+        archiveArtifacts artifacts: 'trivy-report.json'
+      }
     }
     stage("third stage - run containers"){
       steps{
