@@ -4,9 +4,6 @@ FROM node:1.0
 # Copy contents into image
  COPY . . 
 
-# Install express module
-RUN npm install --save express 
-
 # Expose the correct port
 EXPOSE 5000
 
