@@ -1,5 +1,5 @@
 # Use Python 3.6 or later as a base image
-FROM node
+FROM node:latest
 
 #Working directory
 WORKDIR /nodejs-project
