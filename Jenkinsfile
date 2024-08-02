@@ -9,7 +9,7 @@ pipeline{
     }
     stage("second stage - build images"){
       steps{
-        sh "docker build -t flask-app"
+        sh "docker build -t flask-app ."
       }
     }
     stage("third stage - run containers"){
