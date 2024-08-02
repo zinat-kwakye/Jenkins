@@ -13,7 +13,7 @@ pipeline{
         sh "docker build -t flask-app ."
       }
     }
-    stage("PWD"){
+    stage("Print Working Directory"){
       steps{
         sh "pwd"
       }
