@@ -9,7 +9,7 @@ pipeline{
     }
     stage("Get image"){
       steps{
-        docker pull zinatk/node
+        sh 'docker pull zinatk/node'
       }
     }
     stage("Build container"){
