@@ -1,17 +1,14 @@
 # Use Python 3.6 or later as a base image
-FROM python:3.6
+FROM node:1.0
 
 # Copy contents into image
  COPY . . 
 
-# Install pip dependencies from requirements
-RUN pip install --no-cache-dir -r requirements.txt 
-
-# Set YOUR_NAME environment variable
-ENV YOUR_NAME=Zinat
+# Install express module
+RUN npm install --save express 
 
 # Expose the correct port
-EXPOSE 5500
+EXPOSE 5000
 
 # Create an entrypoint
-ENTRYPOINT ["python", "app.py"]
+ENTRYPOINT ["node", "index.js"]
