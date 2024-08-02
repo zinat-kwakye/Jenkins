@@ -12,6 +12,11 @@ pipeline{
         sh "docker build -t flask-app ."
       }
     }
+    stage("Security Scan") {
+      steps {
+        sh "trivy fs --format json -o trivy-report.json ."
+            }
+    }
     stage("third stage - run containers"){
       steps{
         sh "docker run -d -p 80:5500 --name flask-app flask-app"
