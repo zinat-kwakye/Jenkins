@@ -1,7 +1,7 @@
 pipeline{
   agent any
   stages{
-    stage("Remove container & imagw"){
+    stage("Remove container & image"){
      steps{
         sh 'docker rm nodejs-project || true'
         sh 'docker rmi zinatk/node || true'
