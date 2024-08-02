@@ -6,7 +6,7 @@ FROM node:1.0
 
 # Install express & npm
 RUN npm install .
-npm install --save express .
+#npm install --save express .
 
 # Expose the correct port
 EXPOSE 5000
