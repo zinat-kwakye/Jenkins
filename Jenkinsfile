@@ -3,7 +3,7 @@ pipeline{
   stages{
     stage("Remove container"){
      steps{
-        sh 'docker rm nodejs-project'
+        sh 'docker rm nodejs-project || true'
       }
     }
     stage("Build container"){
