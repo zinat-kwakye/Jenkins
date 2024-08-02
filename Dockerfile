@@ -4,11 +4,12 @@ FROM node:1.0
 # Copy contents into image
  COPY . . 
 
-# Install express
-#npm install --save express .
+# Install express & npm
+RUN npm install .
+npm install --save express .
 
 # Expose the correct port
 EXPOSE 5000
 
 # Create an entrypoint
-COPY ["node", "index.js"]
+COPY ["npm", "start"]
