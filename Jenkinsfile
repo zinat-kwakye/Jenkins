@@ -1,14 +1,19 @@
 pipeline{
   agent any
   stages{
-    stage("Pipeline Stages"){
-      steps{
-        sh 'npm install --save express .'
+    stage("Remove container"){
+     steps{
+        sh 'docker rm nodejs-project'
       }
     }
-    stage("second stage"){
+    stage("Build container"){
+      steps{
+        sh 'docker build -t nodejs-project .'
+      }
+    }
+    stage("Start running"){
       steps{ 
-      sh 'node index.js'
+      sh 'docker run -p 80:5000 --name nodejs-project -d nodejs-project'
       }
     }
   }
