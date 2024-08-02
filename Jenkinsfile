@@ -13,14 +13,29 @@ pipeline{
         sh "docker build -t flask-app ."
       }
     }
-    stage("Security Scan") {
+    stage("PWD"){
+      steps{
+        sh "pwd"
+      }
+    }
+    stage("Security Scan"){
       steps {
         sh "trivy fs --format json -o trivy-report.json ."
             }
     }
+    stage("PWD"){
+      steps{
+        sh "pwd"
+      }
+    }
     stage("Archive File"){
       steps{
         archiveArtifacts artifacts: 'trivy-report.json'
+      }
+    }
+    stage("List"){
+      steps{
+        sh "ls -a"
       }
     }
     stage("third stage - run containers"){
