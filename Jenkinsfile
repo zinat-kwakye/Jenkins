@@ -4,7 +4,7 @@ pipeline{
     stage("Remove container & imagw"){
      steps{
         sh 'docker rm nodejs-project || true'
-        sh 'docker rmi zinatk/node || true'
+        sh 'docker rmi zinatk/node:1.0 || true'
       }
     }
     stage("Get image"){
