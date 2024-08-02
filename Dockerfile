@@ -12,4 +12,4 @@ npm install --save express .
 EXPOSE 5000
 
 # Create an entrypoint
-COPY ["npm", "start"]
+ENTRYPOINT ["npm", "start"]
