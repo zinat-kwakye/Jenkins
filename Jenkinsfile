@@ -21,7 +21,7 @@ pipeline{
     stage("Security Scan"){
       steps {
         sh "trivy fs --format json -o trivy-report.json ."
-            }
+      }
     }
     stage("PWD"){
       steps{
