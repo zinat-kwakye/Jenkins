@@ -3,7 +3,7 @@ pipeline{
   stages{
     stage("Print text"){
       steps{
-        sh 'echo "Hello World! This is an update."'
+        sh 'echo "Hello World!"'
       }
     }  
   }
