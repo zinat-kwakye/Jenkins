@@ -1,26 +1,20 @@
 pipeline{
   agent any
   stages{
-    stage("Remove container & image"){
+    stage("k8s"){
      steps{
-        sh 'docker rm nodejs-project || true'
-        sh 'docker rmi zinatk/node || true'
-      }
-    }
-    stage("Get image"){
-      steps{
-        sh 'docker pull zinatk/node'
-      }
-    }
-    stage("Build container"){
-      steps{
-        sh 'docker build -t zinatk/node .'
-      }
-    }
-    stage("Start running"){
-      steps{ 
-      sh 'docker run -d -p 80:5000 --name nodejs-project zinatk/node'
-      }
-    }
+        withKubeCredentials(kubectlCredentials: [[caCertificate: &#39;&#39;, clusterName: &#39;cluster&#39;,
+contextName:", credentialsId: 'jenkins-kbs', namespace: 'default', serverUrl:
+'https://53B639569AEB9EEEB64B85F8EAE23785.gr7.eu-west-2.eks.amazonaws.com']])
+       {
+         sh 'curl -LO "https://storage.googleapis.com/kubernetes-
+release/release/v1.20.5/bin/linux/amd64/kubectl"'
+         sh 'chmod u+x ./kubectl'
+         sh './kubectl get nodes'
+         sh '.kubectl create -f pod.yaml'
+         sh './kubectl get pods'
+       }
+     }
+   } 
   }
 }
