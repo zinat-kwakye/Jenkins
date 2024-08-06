@@ -3,7 +3,7 @@ pipeline{
   stages{
     stage("k8s"){
      steps{
-        withKubeCredentials(kubectlCredentials: [[caCertificate: &#39;&#39;, clusterName: &#39;cluster&#39;,
+        withKubeCredentials(kubectlCredentials: [[caCertificate:",clusterName:';cluster',
 contextName:", credentialsId: 'jenkins-kbs', namespace: 'default', serverUrl:
 'https://53B639569AEB9EEEB64B85F8EAE23785.gr7.eu-west-2.eks.amazonaws.com']])
        {
